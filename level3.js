@@ -125,31 +125,47 @@ boxes.forEach((box)=>{
 
         result.style.display="block";
 
-        result.innerHTML=`
+        result.innerHTML = `
 
-            <div style="font-size:70px;">
-                ${random.emoji}
-            </div>
+<div style="
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:30px;
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    border:2px solid rgba(255,255,255,.2);
+">
 
-            <h2 style="
-                margin:15px 0;
-                color:white;
-                font-size:30px;
-            ">
-                ${random.title}
-            </h2>
+    <div style="
+        font-size:70px;
+        margin-bottom:15px;
+    ">
+        ${random.emoji}
+    </div>
 
-            <p style="
-                white-space:pre-line;
-                font-size:20px;
-                line-height:1.6;
-                color:white;
-                margin-bottom:20px;
-            ">
+    <h2 style="
+        color:white;
+        font-size:30px;
+        margin-bottom:20px;
+    ">
+        ${random.title}
+    </h2>
+
+    <p style="
+        white-space:pre-line;
+        color:white;
+        font-size:20px;
+        line-height:1.8;
+    ">
 ${random.text}
-            </p>
+    </p>
 
-        `;
+</div>
+
+`;
 
         nextBtn.style.display="inline-block";
 
