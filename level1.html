@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Level 1 - Clear the Sky</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+
+    margin:0;
+
+    overflow:hidden;
+
+    font-family:Poppins,sans-serif;
+
+    background:linear-gradient(#4b5563,#1f2937);
+
+}
+
+#title{
+
+    position:absolute;
+
+    top:20px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:34px;
+
+}
+
+#score{
+
+    position:absolute;
+
+    top:20px;
+
+    right:30px;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+.cloud{
+
+    position:absolute;
+
+    font-size:80px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    user-select:none;
+
+}
+
+#message{
+
+    position:absolute;
+
+    width:100%;
+
+    top:90px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+#nextBtn{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:50px;
+
+    transform:translateX(-50%);
+
+    display:none;
+
+    padding:15px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#ff4d8d;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 id="title">☁️ Clear Away the Sad Clouds ☁️</h1>
+
+<div id="message">
+Pop every cloud to bring back the sunshine 🌞
+</div>
+
+<div id="score">
+0 / 10
+</div>
+
+<button id="nextBtn">
+Continue 💗
+</button>
+
+<script src="level1.js"></script>
+<audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+</body>
+
+</html>
