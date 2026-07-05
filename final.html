@@ -1,177 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mission Complete ❤️</title>
+    <title>Mission Complete ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
 
-height:100vh;
+    height:100vh;
 
-display:flex;
+    overflow:hidden;
 
-justify-content:center;
+    display:flex;
 
-align-items:center;
+    justify-content:center;
 
-background:linear-gradient(135deg,#1a1a40,#6a11cb);
+    align-items:center;
 
-overflow:hidden;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4,#fbc2eb);
 
-color:white;
-
-text-align:center;
+    position:relative;
 
 }
 
-.card{
+/* Floating Rain */
 
-background:rgba(255,255,255,.1);
+.rain{
 
-padding:50px;
+    position:fixed;
 
-border-radius:25px;
+    inset:0;
 
-backdrop-filter:blur(15px);
+    pointer-events:none;
 
-max-width:700px;
+    overflow:hidden;
 
-width:90%;
+}
+
+/* Love Message */
+
+#love{
+
+    position:fixed;
+
+    top:40px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    color:#ff2f7d;
+
+    text-shadow:0 0 20px #fff;
+
+    z-index:999;
+
+}
+
+/* Glass Card */
+
+.container{
+
+    width:600px;
+
+    max-width:90%;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 10px 40px rgba(0,0,0,.25);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    z-index:10;
 
 }
 
 h1{
 
-font-size:45px;
+    color:white;
 
-margin-bottom:20px;
+    font-size:40px;
 
-animation:pulse 1.5s infinite;
-
-}
-
-p{
-
-font-size:22px;
-
-line-height:40px;
+    margin-bottom:20px;
 
 }
 
-button{
+#text{
 
-margin-top:40px;
+    color:white;
 
-padding:15px 40px;
+    font-size:21px;
 
-border:none;
+    line-height:36px;
 
-border-radius:40px;
-
-background:#ff4d8d;
-
-color:white;
-
-font-size:18px;
-
-cursor:pointer;
+    min-height:260px;
 
 }
 
-@keyframes pulse{
+/* Heart Beat */
+
+@keyframes heartbeat{
+
+0%{
+transform:scale(1);
+}
 
 50%{
-
 transform:scale(1.08);
+}
 
+100%{
+transform:scale(1);
 }
 
 }
-.hearts span{
 
-position:absolute;
+#love{
 
-bottom:-50px;
+animation:heartbeat 1s infinite;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.container{
+
+width:95%;
+
+padding:25px;
+
+}
+
+#love{
+
+font-size:28px;
+
+}
+
+h1{
 
 font-size:30px;
 
-animation:float 10s linear infinite;
-
 }
 
-.hearts span:nth-child(1){left:10%;}
-.hearts span:nth-child(2){left:30%;animation-duration:12s;}
-.hearts span:nth-child(3){left:50%;animation-duration:9s;}
-.hearts span:nth-child(4){left:70%;animation-duration:13s;}
-.hearts span:nth-child(5){left:90%;animation-duration:11s;}
+#text{
 
-@keyframes float{
+font-size:18px;
 
-from{
-
-transform:translateY(0);
-
-opacity:1;
-
-}
-
-to{
-
-transform:translateY(-120vh);
-
-opacity:0;
+line-height:30px;
 
 }
 
 }
-</style>
+
+    </style>
 
 </head>
 
 <body>
-    
-<div class="hearts">
-    <span>❤️</span>
-    <span>💖</span>
-    <span>💕</span>
-    <span>💗</span>
-    <span>💞</span>
-</div>
-<div class="card">
 
-<h1>❤️ Mission Complete ❤️</h1>
+<div class="rain"></div>
 
-<p id="text"></p>
+<div id="love"></div>
 
-<button onclick="location.href='index.html'">
+<div class="container">
 
-Play Again 😊
+<h1>
+🎉 Mission Complete ❤️
+</h1>
 
-</button>
+<div id="text"></div>
 
 </div>
 
-<script src="final.js"></script>
-<audio id="bgMusic" autoplay style="display:none;">
+<audio id="bgMusic" autoplay hidden>
     <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 
 <script src="final.js"></script>
 
 </body>
-</body>
+
 </html>
