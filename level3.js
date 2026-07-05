@@ -5,8 +5,8 @@ title:"🌹 A Rose For You 🌹",
 emoji:"🌹",
 text:`Every flower is beautiful...
 
-But somehow,
-none of them are as beautiful
+But none of them
+are as beautiful
 as your smile.
 
 ❤️ I Love You ❤️`
@@ -17,14 +17,11 @@ title:"💖 My Heart 💖",
 emoji:"💖",
 text:`You have no idea...
 
-how happy I feel
+How happy I feel
 whenever I talk to you.
 
-Every conversation,
-every smile,
-every little moment...
-
-means a lot to me.
+Your smile means
+everything to me.
 
 ❤️`
 },
@@ -34,13 +31,10 @@ title:"🤗 One Wish 🤗",
 emoji:"🤗",
 text:`If I had one wish...
 
-it would simply be
+It would simply be
 
 to see you smile
 every single day.
-
-Because your happiness
-means everything to me.
 
 ❤️`
 },
@@ -50,11 +44,9 @@ title:"💌 A Secret 💌",
 emoji:"💌",
 text:`I made this little game...
 
-just for you.
+Just for you.
 
-Every click,
-every message,
-every level...
+Every click...
 
 was made with love.
 
@@ -64,15 +56,11 @@ was made with love.
 {
 title:"✨ Truth ✨",
 emoji:"✨",
-text:`I tried to hide it.
+text:`I tried to hide it...
 
-But I can't anymore...
+But I can't anymore.
 
 I really...
-
-really...
-
-really...
 
 ❤️ Love You ❤️`
 },
@@ -80,7 +68,8 @@ really...
 {
 title:"🌙 One More Thing 🌙",
 emoji:"🌙",
-text:`No matter where life takes us...
+text:`No matter
+where life takes us...
 
 You'll always have
 a special place
@@ -95,8 +84,7 @@ emoji:"🧸",
 text:`Close your eyes...
 
 Imagine
-the biggest,
-warmest hug.
+the biggest hug.
 
 That's from me.
 
@@ -106,16 +94,17 @@ That's from me.
 {
 title:"💍 Final Gift 💍",
 emoji:"💍",
-text:`You don't have to answer today.
+text:`You don't have
+to answer today.
 
-I just wanted you to know...
+I just wanted you
+to know...
 
 ❤️
 
-I Love You,
-Rohini.
+I Love You Rohini.
 
-Forever.`
+Forever ❤️`
 }
 
 ];
@@ -124,22 +113,29 @@ const boxes = document.querySelectorAll(".box");
 const result = document.getElementById("result");
 const nextBtn = document.getElementById("nextBtn");
 
-boxes.forEach(box=>{
+boxes.forEach((box)=>{
 
-    box.onclick=function(){
+    box.addEventListener("click",function(){
 
-        const random=surprises[Math.floor(Math.random()*surprises.length)];
+        const random = surprises[Math.floor(Math.random()*surprises.length)];
 
         document.querySelector(".boxes").style.display="none";
+
+        document.querySelector("h1").style.display="none";
 
         result.style.display="block";
 
         result.innerHTML=`
-            <div style="font-size:70px;margin-bottom:10px;">
+
+            <div style="font-size:70px;">
                 ${random.emoji}
             </div>
 
-            <h2 style="color:white;margin-bottom:15px;font-size:32px;">
+            <h2 style="
+                margin:15px 0;
+                color:white;
+                font-size:30px;
+            ">
                 ${random.title}
             </h2>
 
@@ -148,20 +144,21 @@ boxes.forEach(box=>{
                 font-size:20px;
                 line-height:1.6;
                 color:white;
-                margin-bottom:30px;
+                margin-bottom:20px;
             ">
-                ${random.text}
+${random.text}
             </p>
+
         `;
 
         nextBtn.style.display="inline-block";
 
-    }
+    });
 
 });
 
-nextBtn.onclick=function(){
+nextBtn.addEventListener("click",function(){
 
     window.location.href="final.html";
 
-}
+});
