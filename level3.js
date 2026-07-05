@@ -128,8 +128,38 @@ Forever.`
 
 ];
 
-nextBtn.onclick=function(){
+// Get Elements
+const boxes = document.querySelectorAll(".box");
+const result = document.getElementById("result");
+const nextBtn = document.getElementById("nextBtn");
 
-window.location.href="final.html";
+// Box Click
+boxes.forEach(box => {
 
-}
+    box.addEventListener("click", function () {
+
+        const random = surprises[Math.floor(Math.random() * surprises.length)];
+
+        document.querySelector(".boxes").style.display = "none";
+
+        result.style.display = "block";
+
+        result.innerHTML = `
+            <h1>${random.emoji}</h1>
+            <p style="white-space:pre-line;line-height:38px;font-size:22px;">
+                ${random.text}
+            </p>
+        `;
+
+        nextBtn.style.display = "inline-block";
+
+    });
+
+});
+
+// Final Button
+nextBtn.onclick = function () {
+
+    window.location.href = "final.html";
+
+};
