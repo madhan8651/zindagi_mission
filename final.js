@@ -1,139 +1,174 @@
 const bgMusic = document.getElementById("bgMusic");
+const text = document.getElementById("text");
+const love = document.getElementById("love");
 
-// Play music and confetti
-window.onload = function () {
+// Love Messages
+const loveMessages = [
 
-    bgMusic.play().catch(() => {
-        console.log("Autoplay blocked");
-    });
+    "❤️ I Love You Rohini ❤️",
+    "💖 I Love You Bangaram 💖",
+    "💕 I Love You Pattu 💕",
+    "🌹 I Love You Radha 🌹",
+    "✨ I Love You Rohi ✨"
+
+];
+
+// Colors
+const colors = [
+
+    "#ff4d8d",
+    "#ff0000",
+    "#ff9800",
+    "#ffd700",
+    "#00e676",
+    "#00b0ff",
+    "#9c27b0",
+    "#ffffff"
+
+];
+
+// Final Letter
+const message = `Hey Bangaram... ❤️
+
+Thank you for playing
+this little surprise.
+
+I made every level,
+every animation,
+every message...
+
+thinking about you.
+
+I know life isn't always easy.
+
+But I hope...
+
+this made you smile,
+even if it was
+just for a few seconds.
+
+Seeing you smile
+means more to me
+than you know.
+
+Take care of yourself.
+
+Keep smiling.
+
+❤️`;
+
+window.onload = function(){
+
+    bgMusic.play().catch(()=>{});
 
     confetti({
-        particleCount: 250,
-        spread: 120,
-        origin: { y: 0.6 }
+        particleCount:250,
+        spread:120,
+        origin:{y:0.6}
     });
+
+    changeLove();
+
+    startRain();
+
+    typeWriter();
 
 };
 
-// Message
-const message = `Hey Rohini,
+// Typewriter
+let i=0;
 
-Life isn't always easy.
+function typeWriter(){
 
-Some days feel heavy,
-and that's completely okay.
+    if(i<message.length){
 
-I just wanted to remind you...
+        if(message.charAt(i)==="\n"){
 
-You deserve happiness.
-You deserve peace.
-And you deserve lots of smiles.
+            text.innerHTML+="<br>";
 
-If this little game made you smile,
-even for a few seconds...
+        }else{
 
-Then my mission was successful. ❤️
+            text.innerHTML+=message.charAt(i);
 
-Take care of yourself.
-Keep smiling. 😊`;
-
-let i = 0;
-
-const text = document.getElementById("text");
-
-function type() {
-
-    if (i < message.length) {
-
-        if (message.charAt(i) === "\n") {
-            text.innerHTML += "<br>";
-        } else {
-            text.innerHTML += message.charAt(i);
         }
 
         i++;
 
-        setTimeout(type, 40);
-
-    } else {
-
-        setTimeout(showLove, 1000);
+        setTimeout(typeWriter,35);
 
     }
 
 }
 
-type();
+// Love Text
+let index=0;
+let color=0;
 
-// Final Love Animation
-function showLove() {
+function changeLove(){
 
-    const loveMessages = [
+    love.innerHTML=loveMessages[index];
 
-        "❤️ I Love You Rohini ❤️",
-        "❤️ I Love You Radha ❤️",
-        "❤️ I Love You Bangaram ❤️",
-        "❤️ I Love You Pattu ❤️",
-        "❤️ I Love You Rohi ❤️"
+    love.style.color=colors[color];
 
-    ];
+    love.style.textShadow="0 0 25px "+colors[color];
 
-    const colors = [
+    index++;
 
-        "#ff4d8d",
-        "#ff0000",
-        "#ff9800",
-        "#ffd700",
-        "#00e676",
-        "#00b0ff",
-        "#2979ff",
-        "#9c27b0",
-        "#ffffff"
+    color++;
 
-    ];
+    if(index>=loveMessages.length){
 
-    const love = document.createElement("h1");
-
-    love.style.position = "fixed";
-    love.style.left = "50%";
-    love.style.top = "80%";
-    love.style.transform = "translate(-50%,-50%)";
-    love.style.fontSize = "50px";
-    love.style.fontWeight = "bold";
-    love.style.zIndex = "9999";
-    love.style.textAlign = "center";
-    love.style.transition = "all .5s ease";
-    love.style.animation = "heartbeat 1s infinite";
-
-    document.body.appendChild(love);
-
-    let msg = 0;
-    let clr = 0;
-
-    function updateLove() {
-
-        love.innerHTML = loveMessages[msg];
-
-        love.style.color = colors[clr];
-
-        love.style.textShadow = `0 0 25px ${colors[clr]}`;
-
-        msg++;
-
-        clr++;
-
-        if(msg >= loveMessages.length){
-            msg = 0;
-        }
-
-        if(clr >= colors.length){
-            clr = 0;
-        }
+        index=0;
 
     }
 
-    updateLove();
+    if(color>=colors.length){
 
-    setInterval(updateLove,1500);
+        color=0;
+
+    }
+
+    setTimeout(changeLove,1500);
+
+}
+
+// Rain ❤️🍫
+function startRain(){
+
+    setInterval(()=>{
+
+        const item=document.createElement("div");
+
+        item.innerHTML=Math.random()>0.5?"❤️":"🍫";
+
+        item.style.position="fixed";
+
+        item.style.left=Math.random()*100+"vw";
+
+        item.style.top="-60px";
+
+        item.style.fontSize=(25+Math.random()*20)+"px";
+
+        item.style.pointerEvents="none";
+
+        item.style.zIndex="999";
+
+        item.style.transition="transform 6s linear";
+
+        document.body.appendChild(item);
+
+        setTimeout(()=>{
+
+            item.style.transform="translateY(120vh) rotate(360deg)";
+
+        },50);
+
+        setTimeout(()=>{
+
+            item.remove();
+
+        },6000);
+
+    },250);
 
 }
