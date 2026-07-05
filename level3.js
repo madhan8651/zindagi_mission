@@ -1,10 +1,9 @@
 const surprises = [
 
 {
+title:"🌹 A Rose For You 🌹",
 emoji:"🌹",
-text:`🌹 A Rose For You 🌹
-
-Every flower is beautiful...
+text:`Every flower is beautiful...
 
 But somehow,
 none of them are as beautiful
@@ -14,10 +13,9 @@ as your smile.
 },
 
 {
+title:"💖 My Heart 💖",
 emoji:"💖",
-text:`💖 My Heart 💖
-
-You have no idea...
+text:`You have no idea...
 
 how happy I feel
 whenever I talk to you.
@@ -32,10 +30,9 @@ means a lot to me.
 },
 
 {
+title:"🤗 One Wish 🤗",
 emoji:"🤗",
-text:`🤗 One Wish 🤗
-
-If I had one wish...
+text:`If I had one wish...
 
 it would simply be
 
@@ -49,10 +46,9 @@ means everything to me.
 },
 
 {
+title:"💌 A Secret 💌",
 emoji:"💌",
-text:`💌 A Secret 💌
-
-I made this little game...
+text:`I made this little game...
 
 just for you.
 
@@ -66,10 +62,9 @@ was made with love.
 },
 
 {
+title:"✨ Truth ✨",
 emoji:"✨",
-text:`✨ Truth ✨
-
-I tried to hide it.
+text:`I tried to hide it.
 
 But I can't anymore...
 
@@ -83,10 +78,9 @@ really...
 },
 
 {
+title:"🌙 One More Thing 🌙",
 emoji:"🌙",
-text:`🌙 One More Thing 🌙
-
-No matter where life takes us...
+text:`No matter where life takes us...
 
 You'll always have
 a special place
@@ -96,10 +90,9 @@ in my heart.
 },
 
 {
+title:"🧸 Virtual Hug 🧸",
 emoji:"🧸",
-text:`🧸 Virtual Hug 🧸
-
-Close your eyes...
+text:`Close your eyes...
 
 Imagine
 the biggest,
@@ -111,10 +104,9 @@ That's from me.
 },
 
 {
+title:"💍 Final Gift 💍",
 emoji:"💍",
-text:`💍 Final Gift 💍
-
-You don't have to answer today.
+text:`You don't have to answer today.
 
 I just wanted you to know...
 
@@ -128,38 +120,48 @@ Forever.`
 
 ];
 
-// Get Elements
 const boxes = document.querySelectorAll(".box");
 const result = document.getElementById("result");
 const nextBtn = document.getElementById("nextBtn");
 
-// Box Click
-boxes.forEach(box => {
+boxes.forEach(box=>{
 
-    box.addEventListener("click", function () {
+    box.onclick=function(){
 
-        const random = surprises[Math.floor(Math.random() * surprises.length)];
+        const random=surprises[Math.floor(Math.random()*surprises.length)];
 
-        document.querySelector(".boxes").style.display = "none";
+        document.querySelector(".boxes").style.display="none";
 
-        result.style.display = "block";
+        result.style.display="block";
 
-        result.innerHTML = `
-            <h1>${random.emoji}</h1>
-            <p style="white-space:pre-line;line-height:38px;font-size:22px;">
+        result.innerHTML=`
+            <div style="font-size:70px;margin-bottom:10px;">
+                ${random.emoji}
+            </div>
+
+            <h2 style="color:white;margin-bottom:15px;font-size:32px;">
+                ${random.title}
+            </h2>
+
+            <p style="
+                white-space:pre-line;
+                font-size:20px;
+                line-height:1.6;
+                color:white;
+                margin-bottom:30px;
+            ">
                 ${random.text}
             </p>
         `;
 
-        nextBtn.style.display = "inline-block";
+        nextBtn.style.display="inline-block";
 
-    });
+    }
 
 });
 
-// Final Button
-nextBtn.onclick = function () {
+nextBtn.onclick=function(){
 
-    window.location.href = "final.html";
+    window.location.href="final.html";
 
-};
+}
